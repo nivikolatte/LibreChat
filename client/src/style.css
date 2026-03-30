@@ -125,6 +125,25 @@ html {
   --chart-5: 27 87% 67%;
   --switch-unchecked: 0 0% 58%;
 }
+
+/* ── Mira brand overrides ─────────────────────────────────────────────────── */
+/* Override these CSS variables per customer (see docs/WHITE_LABEL.md)        */
+:root {
+  --mira-primary:       #1F6FEB;
+  --mira-primary-hover: #1A5CC7;
+  --mira-primary-light: #E8F1FD;
+  --mira-text:          #111827;
+  --mira-text-muted:    #6B7280;
+  --mira-bg:            #F8F9FB;
+  --mira-surface:       #FFFFFF;
+  --mira-border:        #DDE3EA;
+
+  /* Map Mira tokens to LibreChat's CSS variables */
+  --surface-submit:       var(--mira-primary);
+  --surface-submit-hover: var(--mira-primary-hover);
+}
+/* ── End Mira overrides ───────────────────────────────────────────────────── */
+
 .dark {
   --brand-purple: #ab68ff;
   --presentation: var(--gray-800);
