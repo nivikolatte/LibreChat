@@ -123,6 +123,11 @@ const HoverButtons = ({
   isLast,
   handleFeedback,
 }: THoverButtons) => {
+  // Product choice for Mira: keep conversation actions (Share/Duplicate/Archive)
+  // but hide per-message fork and thumbs feedback controls.
+  const SHOW_FORK_ACTION = false;
+  const SHOW_FEEDBACK_ACTIONS = false;
+
   const localize = useLocalize();
   const [isCopied, setIsCopied] = useState(false);
   const [TextToSpeech] = useRecoilState<boolean>(store.textToSpeech);
@@ -235,16 +240,18 @@ const HoverButtons = ({
       )}
 
       {/* Fork Button */}
-      <Fork
-        messageId={message.messageId}
-        conversationId={conversation.conversationId}
-        forkingSupported={forkingSupported}
-        latestMessageId={latestMessageId}
-        isLast={isLast}
-      />
+      {SHOW_FORK_ACTION && (
+        <Fork
+          messageId={message.messageId}
+          conversationId={conversation.conversationId}
+          forkingSupported={forkingSupported}
+          latestMessageId={latestMessageId}
+          isLast={isLast}
+        />
+      )}
 
       {/* Feedback Buttons */}
-      {!isCreatedByUser && handleFeedback != null && (
+      {SHOW_FEEDBACK_ACTIONS && !isCreatedByUser && handleFeedback != null && (
         <Feedback handleFeedback={handleFeedback} feedback={message.feedback} isLast={isLast} />
       )}
 
